@@ -234,8 +234,8 @@ class Game():
         self.score = 0
         self.round_number = 0
 
-        self.player.lives = 5
-        self.player.warps = 2
+        self.player.lives = 10000
+        self.player.warps = 10000
         self.player.reset()
 
         self.start_new_round()
@@ -254,8 +254,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.centerx = WINDOW_WIDTH//2
         self.rect.bottom = WINDOW_HEIGHT
 
-        self.lives = 5
-        self.warps = 2
+        self.lives = 10000
+        self.warps = 10000
         self.velocity = 8
 
         self.catch_sound = pygame.mixer.Sound("coin.wav")
@@ -307,7 +307,7 @@ class Monster(pygame.sprite.Sprite):
         #set random motion
         self.dx = random.choice([-1, 1]) #change in x direction
         self.dy = random.choice([-1, 1]) #change in y direction
-        self.velocity = random.randint(1, 5) #random speed 
+        self.velocity = random.randint(1, 3) #random speed 
 
 
     def update(self):

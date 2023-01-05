@@ -139,8 +139,8 @@ class Game():
         """start new round"""
 
         #create a grid of Aliens 11 columns and 5 rows
-        for i in range(11):
-            for j in range(5):
+        for i in range(8):
+            for j in range(3):
                 alien = Alien(64 + i*64, 64 + j*64, self.round_number, self.alien_bullet_group)
                 self.alien_group.add(alien)
 
@@ -211,7 +211,7 @@ class Game():
         self.score = 0
         self.round_number = 1
 
-        self.player.lives = 5
+        self.player.lives = 10000
 
         #Empty groups
         self.alien_group.empty()
@@ -233,7 +233,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.centerx = WINDOW_WIDTH//2
         self.rect.bottom = WINDOW_HEIGHT
 
-        self.lives = 5
+        self.lives = 10000
         self.velocity = 8
 
         self.bullet_group = bullet_group
@@ -253,7 +253,7 @@ class Player(pygame.sprite.Sprite):
     def fire(self):
         """fire a bullet"""
         #restrict the number of bullets on screen at a time
-        if len(self.bullet_group) < 2:
+        if len(self.bullet_group) < 10:
             self.shoot_sound.play()
             PlayerBullet(self.rect.centerx, self.rect.top, self.bullet_group)
 
@@ -315,7 +315,7 @@ class PlayerBullet(pygame.sprite.Sprite):
         self.rect.centerx = x
         self.rect.centery = y
         
-        self.velocity = 10
+        self.velocity = 12
         bullet_group.add(self)
 
     def update(self):
@@ -339,7 +339,7 @@ class AlienBullet(pygame.sprite.Sprite):
         self.rect.centerx =  x
         self.rect.centery = y
 
-        self.velocity = 10
+        self.velocity = 8
         bullet_group.add(self)
 
     def update(self):
